@@ -14,7 +14,7 @@ class Game extends Model
 
     protected $fillable = ['word'];
 
-    protected $hidden = ['word','active', 'success', 'created_at', 'updated_at', 'id'];
+    protected $hidden = ['word', 'active', 'success', 'created_at', 'updated_at', 'id'];
 
     protected $appends = ['hangman', 'unguessed'];
 
@@ -45,11 +45,8 @@ class Game extends Model
 
     public function getHangmanAttribute(): string
     {
-
-        $mans = explode("''',",file_get_contents('../files/hangman.txt'));
-
+        $mans = explode("''',", file_get_contents('../files/hangman.txt'));
         return $mans[$this->guesses];
-
     }
 
     public static function createNewGame()

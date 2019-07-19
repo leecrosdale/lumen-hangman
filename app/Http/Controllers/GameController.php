@@ -25,7 +25,7 @@ class GameController extends Controller
             return response(['status' => 'Complete!', 'word' => $guess]);
         }
 
-        if ($game->guesses >= 6) {
+        if ($game->guesses >= 9) {
             $game->success = false;
             $game->active = false;
             $game->save();
@@ -33,6 +33,10 @@ class GameController extends Controller
         }
 
         $guess = $guess[0];
+
+        if (!preg_match('/^[a-zA-Z\s]+$/', $guess)) {
+            return response(['status' => 'A-Z only']);
+        }
 
         if (Str::contains($game->guessed_letters, $guess)) {
             return response(['status' => 'Already guessed', 'game' => $game]);
