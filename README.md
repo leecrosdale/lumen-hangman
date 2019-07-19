@@ -9,7 +9,8 @@ You get 7 guesses, random word is generated after each round.
 
 Example API output:
 
-``` {
+``` 
+{
 
     "status": "Incorrect",
     "game": {
@@ -19,4 +20,6 @@ Example API output:
         "unguessed": " _  _  _  _  _  _ "
     }
 
-} ```
+} 
+
+```
