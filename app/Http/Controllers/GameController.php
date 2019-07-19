@@ -35,7 +35,7 @@ class GameController extends Controller
         $guess = $guess[0];
 
         if (!preg_match('/^[a-zA-Z\s]+$/', $guess)) {
-            return response(['status' => 'A-Z only']);
+            return response(['status' => 'A-Z only', 'game' => $game]);
         }
 
         if (Str::contains($game->guessed_letters, $guess)) {

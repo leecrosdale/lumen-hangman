@@ -16,11 +16,16 @@ class Game extends Model
 
     protected $hidden = ['word', 'active', 'success', 'created_at', 'updated_at', 'id'];
 
-    protected $appends = ['hangman', 'unguessed'];
+    protected $appends = ['hangman', 'unguessed','remaining'];
 
     public function scopeActive($query)
     {
         return $query->where('active', true);
+    }
+
+    public function getRemainingAttribute(): int
+    {
+        return 9 - $this->guesses;
     }
 
     public function getUnguessedAttribute(): string
